@@ -1,6 +1,6 @@
 {
   "modes": {
-    "light": true,
+    "light": false,
     "dark": true
   },
   "opensIn": "light",
