@@ -10,9 +10,11 @@
     <meta name="apple-mobile-web-app-title" content="Catarina Silva" />
     <title>Catarina Silva — Witchy vibes and 00s nostalgia</title>
     <meta name="description" content="Art by Catarina Silva (@catherinejsart): illustration, fan art and animation from Portugal, with stickers, prints and charms in the shop. Commissions open." />
-    <!-- The site is light (pink) unless this visitor chose the dark theme (components/ThemeSwitch.jsx), or the admin holds the
-         site to one theme (the build writes which one here, from content/site/visibility.json); applied before the first draw. -->
-    <script>try { var only = '__THEME_ONLY__'; if ((only || localStorage.getItem('cs.theme')) === 'dark') document.documentElement.dataset.theme = 'dark' } catch (e) {}</script>
+    <!-- The two accent colours (the build writes them here from content/site/theme.json, so the first draw already has them) -->
+    <style>/*__THEME_VARS__*/</style>
+    <!-- The site opens in the look the admin chose (Theme → Opens in), unless this visitor chose the other one
+         (components/ThemeSwitch.jsx), or the admin holds the site to one look; applied before the first draw. -->
+    <script>try { var only = '__THEME_ONLY__', first = '__THEME_FIRST__'; if ((only || localStorage.getItem('cs.theme') || first) === 'dark') document.documentElement.dataset.theme = 'dark' } catch (e) {}</script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,0 +1,9 @@
+{
+  "modes": {
+    "light": true,
+    "dark": true
+  },
+  "opensIn": "light",
+  "accentLight": "#c42c5c",
+  "accentDark": "#9063cd"
+}

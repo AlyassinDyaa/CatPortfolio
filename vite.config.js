@@ -70,20 +70,28 @@ const thumbs = () => {
   return index
 }
 
-/* The page applies its theme before anything is drawn (the small script in index.html). When the
-   admin has switched one theme off (Show or hide), that script has to know which one is left,
-   so the build writes it into the page. */
+/* The page applies its theme before anything is drawn (the small script in index.html). It has to
+   know which look the admin has switched off (Theme → Dark and light), which one the site opens
+   in, and the two accent colours every tint of the page is built from, so the build writes them
+   into the page. */
 const themeOnly = () => ({
   name: 'theme-only',
-  transformIndexHtml(html) {
-    let only = ''
+  // 'pre': before Vite reads the inline <style>, which would drop the comment the colours replace
+  transformIndexHtml: { order: 'pre', handler(html) {
+    let only = '', first = 'light', light = '#c42c5c', dark = '#9063cd'
     try {
-      const { themes = {} } = JSON.parse(readFileSync(resolve('content/site/visibility.json'), 'utf8'))
-      const dark = themes.dark !== false, light = themes.light !== false
-      if (dark !== light) only = dark ? 'dark' : 'light'
-    } catch { /* no file yet: visitors choose */ }
-    return html.replace('__THEME_ONLY__', only)
-  },
+      const look = JSON.parse(readFileSync(resolve('content/site/theme.json'), 'utf8'))
+      const lightOn = look.modes?.light !== false, darkOn = look.modes?.dark !== false
+      if (lightOn !== darkOn) only = darkOn ? 'dark' : 'light'
+      if (look.opensIn === 'dark') first = 'dark'
+      // only a plain #rrggbb ever reaches the page
+      const hex = (v, fallback) => (/^#[0-9a-f]{6}$/i.test(String(v || '').trim()) ? String(v).trim() : fallback)
+      light = hex(look.accentLight, light); dark = hex(look.accentDark, dark)
+    } catch { /* no file yet: visitors choose, light first */ }
+    return html
+      .replace('__THEME_ONLY__', only).replace('__THEME_FIRST__', first)
+      .replace('/*__THEME_VARS__*/', `:root{--accent-light:${light};--accent-dark:${dark}}`)
+  } },
 })
 
 const adminBundle = () => ({

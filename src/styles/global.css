@@ -2,45 +2,56 @@
 
 /* The whole site is Cat's scrapbook. Pages are dot-grid paper; pictures are prints, stickers
    and photocards stuck onto them; headings are letters cut out of magazines, the way the covers
-   of her reels are made; and one colour runs through it all: the dark red of her profile
-   picture (--ox). The site is dark (a black-paged scrapbook) unless the visitor switches to
-   light (a cream one): see components/ThemeSwitch.jsx. */
+   of her reels are made.
+
+   One colour runs through each look, and every other colour on the page is a tint of it:
+   --brand. In the light look it is the pink-red of the pen (--accent-light), at night it is
+   Pantone 265 purple (--accent-dark). The admin changes either one (Theme in the admin panel);
+   the build writes them into index.html, and components/App.jsx writes them again at run time.
+   The tints are worked out from --brand with relative colours (oklch), which keep a pastel a
+   pastel whatever hue is chosen. Which look is showing is data-theme on <html> (see
+   components/ThemeSwitch.jsx). */
 :root {
-  /* the pinks, and the red pen that writes on them */
-  --pink: #ffc4d8;            /* the paper most things are cut from */
-  --pink-2: #ff9fc2;          /* bubblegum: the band, hovers */
-  --blush: #fff0f4;
-  --berry: #c42c5c;           /* red pen: buttons, small red writing, links */
-  --berry-deep: #9d1f49;
-  --plum: #3a2230;            /* the ink everything is written in */
+  --brand: var(--accent-light, #c42c5c);   /* the one colour of the light look */
+
+  /* the colour itself, and the pastels cut from it */
+  --berry: var(--brand);                   /* buttons, pen strokes */
+  --berry-text: var(--brand);              /* small writing on the page */
+  --berry-deep: oklch(from var(--brand) calc(l * 0.82) c h);
+  --pink: oklch(from var(--brand) 0.89 calc(c * 0.5) h);     /* the paper most things are cut from */
+  --pink-2: oklch(from var(--brand) 0.79 calc(c * 0.7) h);   /* the tape, hovers, stitching */
+  --blush: oklch(from var(--brand) 0.965 calc(c * 0.12) h);
+  --plum: oklch(from var(--brand) 0.28 calc(c * 0.22) h);    /* the ink everything is written in */
+
+  /* the other pastels are fixed: sticky notes and scraps in every look */
   --lilac: #ddcdf7;
   --sky: #c4e6f7;
   --butter: #fff0a8;
   --mint: #cdf2e0;
   --peach: #ffd6c2;
   --gold: #f2c75c;
-  --print: #ffffff;           /* the white edge of a print or sticker: the same in both themes */
-  --print-ink: #3a2230;       /* writing on that white edge */
+  --print: #ffffff;           /* the white edge of a print or sticker: the same in both looks */
+  --print-ink: var(--plum);   /* writing on that white edge */
 
   /* the page */
-  --page: #fffafb;
-  --dot: rgba(255, 159, 194, 0.3);
-  --gingham: rgba(255, 159, 194, 0.3); /* the two stripes of pink gingham */
-  --gingham-bg: #fff3f7;
-  --trim: #ffc4d8;            /* the lace trim along the edge of a band */
-  --btn-shadow: #ff9fc2;
+  --page: oklch(from var(--brand) 0.985 calc(c * 0.04) h);
+  --dot: oklch(from var(--brand) 0.79 calc(c * 0.7) h / 0.3);
+  --gingham: oklch(from var(--brand) 0.79 calc(c * 0.7) h / 0.3); /* the two stripes of gingham */
+  --gingham-bg: oklch(from var(--brand) 0.972 calc(c * 0.08) h);
+  --trim: var(--pink);        /* the lace trim along the edge of a band */
+  --btn-shadow: var(--pink-2);
   --paper: #ffffff;           /* a sheet laid on the page: notes, cards */
-  --paper-2: #fff4f7;         /* something set into a sheet: a quiet button, a field */
-  --field: #ffdce7;           /* a big field of pink: the footer, the call, the paper under the pile */
-  --on-field: #3a2230;
-  --ink: #3a2230;
-  --ink-2: rgba(58, 34, 48, 0.78);
-  --ink-3: rgba(58, 34, 48, 0.56);
-  --line: rgba(196, 44, 92, 0.14);
-  --line-strong: rgba(196, 44, 92, 0.38);
-  --marker: #ffb3cd;          /* the swipe of highlighter under the open page */
-  --btn-edge: #3a2230;
-  --shadow: 0 12px 30px rgba(196, 44, 92, 0.16), 0 2px 5px rgba(58, 34, 48, 0.12);
+  --paper-2: oklch(from var(--brand) 0.972 calc(c * 0.07) h);  /* something set into a sheet: a quiet button, a field */
+  --field: oklch(from var(--brand) 0.925 calc(c * 0.28) h);    /* a big field of colour: the footer, the paper under the pile */
+  --on-field: var(--plum);
+  --ink: var(--plum);
+  --ink-2: color-mix(in srgb, var(--ink) 78%, transparent);
+  --ink-3: color-mix(in srgb, var(--ink) 56%, transparent);
+  --line: color-mix(in srgb, var(--brand) 14%, transparent);
+  --line-strong: color-mix(in srgb, var(--brand) 38%, transparent);
+  --marker: oklch(from var(--brand) 0.84 calc(c * 0.55) h);    /* the swipe of highlighter under the open page */
+  --btn-edge: var(--ink);
+  --shadow: 0 12px 30px color-mix(in srgb, var(--brand) 16%, transparent), 0 2px 5px color-mix(in srgb, var(--plum) 12%, transparent);
   --open: #1f9c5d;
 
   --display: 'Shrikhand', 'Abril Fatface', Georgia, serif;
@@ -53,27 +64,25 @@
   color-scheme: light;
 }
 
-/* at night: the same pinks on deep plum paper */
+/* at night: the same tints on deep paper of the same hue */
 :root[data-theme='dark'] {
-  --berry: #ff6f9e;
-  --berry-deep: #e04f82;
-  --page: #241620;
-  --dot: rgba(255, 196, 216, 0.1);
-  --gingham: rgba(255, 111, 158, 0.12);
-  --gingham-bg: #2c1a27;
-  --trim: #5a2a44;
-  --btn-shadow: #ff6f9e;
-  --paper: #32202c;
-  --paper-2: #43293a;
-  --field: #5a2a44;
-  --on-field: #fff0f4;
-  --ink: #fff0f4;
-  --ink-2: rgba(255, 240, 244, 0.78);
-  --ink-3: rgba(255, 240, 244, 0.56);
-  --line: rgba(255, 196, 216, 0.14);
-  --line-strong: rgba(255, 196, 216, 0.36);
-  --marker: #8c3a62;
-  --btn-edge: #fff0f4;
+  --brand: var(--accent-dark, #9063cd);
+  --berry-text: oklch(from var(--brand) 0.78 c h);   /* lighter, so small writing reads on dark paper */
+  --berry-deep: oklch(from var(--brand) calc(l * 0.85) c h);
+  --page: oklch(from var(--brand) 0.19 calc(c * 0.32) h);
+  --dot: oklch(from var(--brand) 0.8 c h / 0.1);
+  --gingham: color-mix(in srgb, var(--brand) 14%, transparent);
+  --gingham-bg: oklch(from var(--brand) 0.225 calc(c * 0.3) h);
+  --trim: oklch(from var(--brand) 0.34 calc(c * 0.6) h);
+  --btn-shadow: var(--brand);
+  --paper: oklch(from var(--brand) 0.255 calc(c * 0.34) h);
+  --paper-2: oklch(from var(--brand) 0.31 calc(c * 0.38) h);
+  --field: oklch(from var(--brand) 0.34 calc(c * 0.58) h);
+  --on-field: oklch(from var(--brand) 0.97 calc(c * 0.1) h);
+  --ink: oklch(from var(--brand) 0.97 calc(c * 0.1) h);
+  --line: oklch(from var(--brand) 0.85 c h / 0.14);
+  --line-strong: oklch(from var(--brand) 0.85 c h / 0.36);
+  --marker: oklch(from var(--brand) 0.42 calc(c * 0.7) h);
   --shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.35);
   --open: #57c98a;
   color-scheme: dark;
@@ -98,7 +107,7 @@ button { font: inherit; color: inherit; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3, p, dl, dd, figure { margin: 0; }
 ::selection { background: var(--pink-2); color: var(--plum); }
-:focus-visible { outline: 2px dashed var(--berry); outline-offset: 3px; }
+:focus-visible { outline: 2px dashed var(--berry-text); outline-offset: 3px; }
 
 .container { width: min(1240px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
 .page { display: block; min-height: 70vh; }
@@ -120,14 +129,14 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 /* a label punched out of black label tape */
 .label {
   display: inline-block; margin-bottom: 14px; padding: 0.5em 0.85em 0.42em; border-radius: 2px;
-  background: var(--pink); color: var(--plum); box-shadow: 0 2px 5px rgba(196, 44, 92, 0.18);
+  background: var(--pink); color: var(--plum); box-shadow: 0 2px 5px color-mix(in srgb, var(--brand) 18%, transparent);
   font: 700 0.7rem/1 var(--body); letter-spacing: 0.2em; text-transform: uppercase;
   transform: rotate(-1.2deg);
 }
 
 /* ---------------------------------------------------------------- cut-out letters (components/Ransom.jsx) */
 .ransom { display: flex; flex-wrap: wrap; gap: 0.2em 0.36em; margin: 0; font-weight: 400; line-height: 1; }
-.ransom-word { display: inline-flex; align-items: center; white-space: nowrap; filter: drop-shadow(0.025em 0.05em 0 rgba(58, 34, 48, 0.28)); }
+.ransom-word { display: inline-flex; align-items: center; white-space: nowrap; filter: drop-shadow(0.025em 0.05em 0 color-mix(in srgb, var(--plum) 28%, transparent)); }
 .ransom-l {
   display: inline-grid; place-items: center; min-width: 0.66em; padding: 0.11em 0.14em 0.07em; margin: 0 -0.008em;
   background: var(--bg); color: var(--fg); line-height: 1;
@@ -143,16 +152,16 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .f-tall { font-family: 'Anton', Impact, sans-serif; font-size: 1.08em; }
 .f-type { font-family: 'Special Elite', 'Courier New', monospace; font-size: 1.02em; padding-top: 0.17em; }
 /* the paper each letter is cut from */
-.s-ox { --bg: #ffffff; --fg: #c42c5c; box-shadow: inset 0 0 0 1.5px rgba(196, 44, 92, 0.18); }
-.s-red { --bg: #c42c5c; --fg: #fff0f4; }
-.s-cream { --bg: #ffc4d8; --fg: #3a2230; }
-.s-ink { --bg: #3a2230; --fg: #ffc4d8; }
-.s-kraft { --bg: #ffd6c2; --fg: #3a2230; }
-.s-gold { --bg: #fff0a8; --fg: #3a2230; }
-.s-pink { --bg: #ff9fc2; --fg: #3a2230; }
-.s-lilac { --bg: #ddcdf7; --fg: #3a2230; }
-.s-sky { --bg: #c4e6f7; --fg: #3a2230; }
-.s-mint { --bg: #cdf2e0; --fg: #3a2230; }
+.s-ox { --bg: #ffffff; --fg: var(--berry); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--brand) 18%, transparent); }
+.s-red { --bg: var(--berry); --fg: #ffffff; }
+.s-cream { --bg: var(--pink); --fg: var(--plum); }
+.s-ink { --bg: var(--plum); --fg: var(--pink); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--pink) 35%, transparent); }
+.s-kraft { --bg: var(--peach); --fg: var(--plum); }
+.s-gold { --bg: var(--butter); --fg: var(--plum); }
+.s-pink { --bg: var(--pink-2); --fg: var(--plum); }
+.s-lilac { --bg: var(--lilac); --fg: var(--plum); }
+.s-sky { --bg: var(--sky); --fg: var(--plum); }
+.s-mint { --bg: var(--mint); --fg: var(--plum); }
 /* scissors never cut straight */
 .cut-0 { clip-path: polygon(3% 6%, 97% 0, 100% 94%, 0 100%); }
 .cut-1 { clip-path: polygon(0 0, 100% 5%, 96% 100%, 4% 95%); }
@@ -175,7 +184,7 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .btn:hover .arrow { transform: translateX(4px); }
 .btn.ghost { background: var(--paper); color: var(--ink); border-style: dashed; box-shadow: none; transform: rotate(0.8deg); }
 .btn.ghost:hover, .btn.ghost:focus-visible { background: var(--paper-2); box-shadow: 4px 5px 0 var(--btn-shadow); transform: rotate(0deg) translate(-2px, -2px); }
-.btn.is-cream { background: #fff; color: #c42c5c; border-color: #3a2230; box-shadow: 4px 5px 0 var(--btn-shadow); }
+.btn.is-cream { background: #fff; color: var(--berry); border-color: var(--plum); box-shadow: 4px 5px 0 var(--btn-shadow); }
 .btn.is-cream:hover, .btn.is-cream:focus-visible { background: var(--butter); box-shadow: 6px 7px 0 var(--btn-shadow); }
 .btn.sm { padding: 0.62em 1em; font-size: 0.85rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 18px; margin-top: 28px; }
@@ -222,11 +231,11 @@ h1, h2, h3, p, dl, dd, figure { margin: 0; }
 .doodle.is-sparkle path { fill: var(--gold); }
 .doodle.is-moon path { fill: var(--gold); }
 .doodle.is-heart .doodle-paper { fill: var(--print); }
-.doodle.is-heart .doodle-pen { fill: none; stroke: #c42c5c; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.doodle.is-heart .doodle-pen { fill: none; stroke: var(--berry); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 /* washi tape: translucent, striped, torn at both ends */
 .tape {
   position: absolute; z-index: 2; top: -13px; left: 50%; width: 96px; height: 27px; transform: translateX(-50%) rotate(-3deg); pointer-events: none;
-  background: repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.35) 0 5px, transparent 5px 11px), rgba(255, 159, 194, 0.82);
+  background: repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.35) 0 5px, transparent 5px 11px), oklch(from var(--pink-2) l c h / 0.82);
   clip-path: polygon(0 0, 3% 22%, 0 44%, 3% 66%, 0 100%, 100% 100%, 97% 78%, 100% 56%, 97% 34%, 100% 0);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }

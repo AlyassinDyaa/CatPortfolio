@@ -63,18 +63,19 @@
     'pages/about': { groups: { title: 'Top of the page', story: 'Your story', facts: 'All about me' }, half: [] },
     'pages/contact': { groups: { label: 'Top of the page', topics: 'Form' }, half: ['label', 'title'] },
     'site/brand': { groups: { name: 'Name', email: 'Contact details', social: 'Social links', footerLine: 'Footer' }, half: ['name', 'artist', 'email', 'location'] },
-    'site/visibility': { groups: {}, half: [], inner: ['work', 'gallery', 'commissions', 'about', 'contact', 'dark', 'light', 'ticker', 'project', 'latest', 'shop', 'redraws', 'events'] },
+    'site/theme': { groups: { accentLight: 'Colours' }, half: ['accentLight', 'accentDark'], inner: ['light', 'dark'] },
+    'site/visibility': { groups: {}, half: [], inner: ['work', 'gallery', 'commissions', 'about', 'contact', 'ticker', 'project', 'latest', 'shop', 'redraws', 'events'] },
   }
 
   /* The navigation and the Home screen list the sections in these groups, in this order. */
   const GROUPS = [
     { label: 'Artwork and events', short: 'Content', lead: 'What you add to over time.', has: (s) => !s.file },
     { label: 'Words on each page', short: 'Page text', lead: 'Headings, introductions and buttons, one short form per page.', has: (s) => s.name === 'pages' },
-    { label: 'Whole site', short: 'Site', lead: 'Your name and links, and which parts are switched on.', has: (s) => s.name === 'site' },
+    { label: 'Whole site', short: 'Site', lead: 'Your name and links, the look of the site, and which parts are switched on.', has: (s) => s.name === 'site' },
   ]
   /* The navigation is narrow, and under "Page text" every name would end in "page": there the
      pages go by these shorter names. Tiles and form headings keep the full ones. */
-  const SHORT = { 'pages/home': 'Home', 'pages/lists': 'Work & Gallery', 'pages/commissions': 'Commissions', 'pages/about': 'About', 'pages/contact': 'Contact', 'site/brand': 'Brand & contact', 'site/visibility': 'Show / hide' }
+  const SHORT = { 'pages/home': 'Home', 'pages/lists': 'Work & Gallery', 'pages/commissions': 'Commissions', 'pages/about': 'About', 'pages/contact': 'Contact', 'site/brand': 'Brand & contact', 'site/theme': 'Theme', 'site/visibility': 'Show / hide' }
   /* One line about each single page, for its tile on the Home screen. */
   const ABOUT = {
     'pages/home': 'The top of the home page, what is on your desk right now, the shop and its products, and the heading of each part below it.',
@@ -83,7 +84,8 @@
     'pages/about': 'Who you are: the heading, your story an entry at a time, and the slam book page.',
     'pages/contact': 'The heading, the introduction and what visitors can say their message is about.',
     'site/brand': 'Site name, tagline, logo, email, social links and the footer.',
-    'site/visibility': 'Switch whole pages, dark or light mode, or parts of the home page, on and off.',
+    'site/theme': 'Switch dark or light mode on and off, choose which one the site opens in, and change the colour of each.',
+    'site/visibility': 'Switch whole pages, or parts of the home page, on and off.',
   }
   Object.assign(ICONS, {
     'pages/home': 'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
@@ -92,6 +94,7 @@
     'pages/about': 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1',
     'pages/contact': 'M4 6h16v12H4z M4 7l8 6 8-6',
     'site/brand': 'M12 3l2.600 5.600 6.100.700-4.500 4.200 1.200 6-5.400-3-5.400 3 1.200-6L3.300 9.300l6.100-.700z',
+    'site/theme': 'M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M12 3v18 M12 3a9 9 0 0 1 0 18z',
     'site/visibility': 'M2.500 12s3.500-6.500 9.500-6.500 9.500 6.500 9.500 6.500-3.500 6.500-9.500 6.500S2.500 12 2.500 12z M12 9.500a2.500 2.500 0 1 0 0 5 2.500 2.500 0 0 0 0-5z',
   })
   ICONS.adminhome = 'M4 4h7v7H4z M13 4h7v4h-7z M13 10h7v10h-7z M4 13h7v7H4z'

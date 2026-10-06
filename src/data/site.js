@@ -52,9 +52,21 @@ export let previewing = false
    (anything not listed there is shown), and every entry has its own "Hide from the site" switch. */
 let visibility = {}
 export const shows = (group, key) => visibility[group]?.[key] !== false
+/* The theme: which of the two looks are switched on, which one the site opens in, and the one
+   colour each look is built from (content/site/theme.json, "Theme" in the admin). */
+export let theme
+const HEX = /^#[0-9a-f]{6}$/i
+const colour = (value, fallback) => (HEX.test(String(value || '').trim()) ? String(value).trim() : fallback)
 /* The one theme the site is held to, when the admin has switched the other off ("dark" or "light");
    empty when visitors may choose. With both switched off, both stay on. */
-export const themeOnly = () => (shows('themes', 'dark') === shows('themes', 'light') ? '' : shows('themes', 'dark') ? 'dark' : 'light')
+export const themeOnly = () => (theme.modes.dark === theme.modes.light ? '' : theme.modes.dark ? 'dark' : 'light')
+/* Writes the two accent colours where the stylesheet reads them (src/styles/global.css derives every
+   tint of the page from them). The build also writes them into index.html, so the first draw is right. */
+export const applyAccent = () => {
+  const root = document.documentElement.style
+  root.setProperty('--accent-light', theme.accentLight)
+  root.setProperty('--accent-dark', theme.accentDark)
+}
 
 let newPictures = {} // pictures saved after this build: "/uploads/x.webp" -> the picture itself
 
@@ -75,6 +87,13 @@ function assemble(content) {
 
   // Every piece of text has a built-in wording, so a content file that predates a field still works.
   visibility = site('visibility')
+  const look = site('theme')
+  theme = {
+    modes: { light: look.modes?.light !== false, dark: look.modes?.dark !== false },
+    opensIn: look.opensIn === 'dark' ? 'dark' : 'light',
+    accentLight: colour(look.accentLight, '#c42c5c'),
+    accentDark: colour(look.accentDark, '#9063cd'),
+  }
   brand = { name: 'Catarina Silva', ...name }
   hero = { primaryLabel: 'See the work', secondaryLabel: 'Commission a piece', ...given({ kicker, text, primaryLabel, secondaryLabel }) }
   marquee = words || []

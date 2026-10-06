@@ -32,8 +32,8 @@ The site is edited at **`/admin`** (for example `https://your-site.com/admin/`).
 It is a content manager (Decap CMS) that saves every change as a commit to this repository.
 The site rebuilds itself about a minute later. No code involved.
 
-The panel is the site's own backstage in its night look (`public/admin/admin.css`): plum paper,
-pink pen, Shrikhand and DM Sans, with the fonts kept beside it in `public/admin/fonts/`.
+The panel is the site's own backstage in its night look (`public/admin/admin.css`): deep purple
+paper, Pantone 265 purple, Shrikhand and DM Sans, with the fonts kept beside it in `public/admin/fonts/`.
 
 | Section | What you control |
 |---|---|
@@ -44,7 +44,8 @@ pink pen, Shrikhand and DM Sans, with the fonts kept beside it in `public/admin/
 | Home page | The words at the top, the pink tape, what is on the desk right now, and **the shop**: what is sold, the discount code, the shop link and the products shown as photocards (name, picture, price, link) |
 | Work and Gallery, Commissions, About, Contact pages | The words on each page. Commissions also holds open or closed, the offers and prices, and where "Get a quote" goes; About holds the diary entries and the slam-book answers |
 | Name and contact | Site name, tagline, logo, email, social links, footer text |
-| Show or hide | Switch whole pages, dark or light mode, or parts of the home page (the shop included), on and off |
+| Theme | **Dark and light:** switch either mode on or off (switch one off and the site is always the other one, and the sun/moon button goes); which mode a first-time visitor sees; and **the colour of each mode**, a colour picker per mode, from which every tint on the page is worked out |
+| Show or hide | Switch whole pages, or parts of the home page (the shop included), on and off |
 
 Pictures upload straight from the panel into `public/uploads/`. Every piece, gallery section, set
 and event also has a **Hide from the site** switch, which takes it off the site without deleting it.
@@ -79,7 +80,8 @@ has the same effect as using the panel.
 ## Design
 
 - The site is Cat's scrapbook, after the covers of her reels: headings are letters cut from magazines, each on its own scrap of paper in its own face and angle (`components/Ransom.jsx`), and pictures are prints, die-cut stickers and photocards stuck down with washi tape (`components/Print.jsx`).
-- It opens in a **light** look: a white page with pink dots, bands of pink gingham with a lace trim at the top of every page and in the footer, pastel scraps (pink, lilac, butter, sky, mint) and one red pen (`--berry`) for buttons and small writing. The switch in the top bar turns it to night: the same pinks on plum paper. The visitor's choice is remembered in their browser.
+- It opens in a **light** look by default: a white page with dots, bands of gingham with a lace trim at the top of every page and in the footer, pastel scraps and one pen colour for buttons and small writing. The switch in the top bar turns it to night: the same tints on deep paper. The visitor's choice is remembered in their browser.
+- **One colour per look.** `content/site/theme.json` holds the light colour (default `#c42c5c`, the pink-red of her pen) and the dark colour (default `#9063cd`, Pantone 265 purple). Every other colour on the page (the pastels, the gingham, the paper, the ink) is a tint of it, worked out in CSS with relative `oklch()` colours (`src/styles/global.css`), so changing the one colour in the admin re-tints the whole site. The build writes the two colours into `index.html` so the first draw is already right; pick colours deep enough for white lettering on buttons.
 - Type: Shrikhand for headings, DM Sans for reading, Caveat for handwriting; the cut-out letters also use Abril Fatface, Alfa Slab One, Anton and Special Elite.
 - Tokens for both themes are at the top of `src/styles/global.css`.
 - Commission offers are tarot cards; the steps are sticky notes; the About facts are a slam-book page.

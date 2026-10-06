@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useLenis } from './hooks/useLenis'
-import { brand, previewing, shows } from './data/site'
+import { applyAccent, brand, previewing, shows } from './data/site'
 import { useReducedMotion } from './hooks/useMedia'
 import Preloader from './components/Preloader'
 import Nav from './components/Nav'
@@ -20,6 +20,7 @@ export default function App() {
   const reduced = useReducedMotion()
   const [ready, setReady] = useState(false)
   useLenis(!reduced)
+  useEffect(applyAccent, [])
   // what search engines and link previews say about the site: the blurb from "Name and contact" in the admin
   useEffect(() => { if (brand.blurb) document.querySelector('meta[name="description"]')?.setAttribute('content', brand.blurb) }, [])
   return (

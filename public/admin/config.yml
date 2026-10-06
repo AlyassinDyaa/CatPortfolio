@@ -350,6 +350,29 @@ collections:
           - { name: footerLine, label: Closing line in cut-out letters at the foot of every page, widget: string, required: false }
           - { name: footerFine, label: Small print after the © line, widget: string, required: false }
 
+      - name: theme
+        label: Theme
+        file: content/site/theme.json
+        fields:
+          - name: modes
+            label: Dark and light
+            widget: object
+            collapsed: false
+            hint: 'Visitors switch between the two with the sun and moon button in the top bar. Switch one off and the site is always the other one, and the button goes. (With both off, both stay on.)'
+            fields:
+              - { name: light, label: Light mode, widget: boolean, default: true, required: false }
+              - { name: dark, label: Dark mode, widget: boolean, default: true, required: false }
+          - name: opensIn
+            label: The site opens in
+            widget: select
+            default: light
+            options:
+              - { label: 'Light mode', value: light }
+              - { label: 'Dark mode', value: dark }
+            hint: 'What a first-time visitor sees. Someone who has used the switch keeps their own choice.'
+          - { name: accentLight, label: Colour in light mode, widget: color, allowInput: true, enableAlpha: false, default: '#c42c5c', hint: 'The one colour the light look is built from: the buttons and writing, and every pastel on the page, which are tints of it. Pick something fairly deep (the buttons have white writing). The pink-red of her pen is #c42c5c.' }
+          - { name: accentDark, label: Colour in dark mode, widget: color, allowInput: true, enableAlpha: false, default: '#9063cd', hint: 'The same for dark mode. The default is Pantone 265 purple, #9063CD.' }
+
       - name: visibility
         label: Show or hide
         file: content/site/visibility.json
@@ -365,14 +388,6 @@ collections:
               - { name: commissions, label: Commissions, widget: boolean, default: true }
               - { name: about, label: About, widget: boolean, default: true }
               - { name: contact, label: Contact, widget: boolean, default: true }
-          - name: themes
-            label: Dark and light
-            widget: object
-            collapsed: false
-            hint: 'Visitors switch between the two with the sun and moon button in the top bar; the site opens in its pink light look. Switch one off and the site is always the other, and the button goes. (With both off, both stay on.)'
-            fields:
-              - { name: dark, label: Dark mode (night), widget: boolean, default: true, required: false }
-              - { name: light, label: Light mode (pink), widget: boolean, default: true, required: false }
           - name: home
             label: Parts of the home page
             widget: object

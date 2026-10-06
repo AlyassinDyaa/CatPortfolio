@@ -14,9 +14,5 @@
     "redraws": true,
     "commissions": true,
     "events": true
-  },
-  "themes": {
-    "dark": true,
-    "light": true
   }
 }
