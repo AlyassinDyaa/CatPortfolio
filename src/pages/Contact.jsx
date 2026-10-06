@@ -34,7 +34,7 @@ export default function Contact() {
   }
   return (
     <Page title="Contact">
-      <section className="open">
+      <section className="contact-top">
         <div className="container request">
           <div>
             <header className="page-head-text">
