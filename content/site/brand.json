@@ -1,0 +1,24 @@
+{
+  "name": "Catarina Silva",
+  "artist": "Catarina Silva",
+  "tagline": "Witchy vibes and 00s nostalgia.",
+  "blurb": "Art by Catarina Silva (@catherinejsart): illustration, fan art and animation from Portugal, with stickers, prints and charms in the shop. Commissions open.",
+  "logo": "/uploads/logo.webp",
+  "email": "",
+  "location": "Portugal",
+  "contactAction": "",
+  "social": [
+    {
+      "label": "Instagram",
+      "handle": "@catherinejsart",
+      "url": "https://www.instagram.com/catherinejsart/"
+    },
+    {
+      "label": "Ko-fi",
+      "handle": "The shop",
+      "url": "https://ko-fi.com/catherinejsart"
+    }
+  ],
+  "footerLine": "See you soon",
+  "footerFine": "Characters shown in fan art belong to their owners."
+}

@@ -1,0 +1,275 @@
+/* Catarina Silva — global styles & tokens */
+
+/* The whole site is Cat's scrapbook. Pages are dot-grid paper; pictures are prints, stickers
+   and photocards stuck onto them; headings are letters cut out of magazines, the way the covers
+   of her reels are made; and one colour runs through it all: the dark red of her profile
+   picture (--ox). The site is dark (a black-paged scrapbook) unless the visitor switches to
+   light (a cream one): see components/ThemeSwitch.jsx. */
+:root {
+  /* the pinks, and the red pen that writes on them */
+  --pink: #ffc4d8;            /* the paper most things are cut from */
+  --pink-2: #ff9fc2;          /* bubblegum: the band, hovers */
+  --blush: #fff0f4;
+  --berry: #c42c5c;           /* red pen: buttons, small red writing, links */
+  --berry-deep: #9d1f49;
+  --plum: #3a2230;            /* the ink everything is written in */
+  --lilac: #ddcdf7;
+  --sky: #c4e6f7;
+  --butter: #fff0a8;
+  --mint: #cdf2e0;
+  --peach: #ffd6c2;
+  --gold: #f2c75c;
+  --print: #ffffff;           /* the white edge of a print or sticker: the same in both themes */
+  --print-ink: #3a2230;       /* writing on that white edge */
+
+  /* the page */
+  --page: #fffafb;
+  --dot: rgba(255, 159, 194, 0.3);
+  --gingham: rgba(255, 159, 194, 0.3); /* the two stripes of pink gingham */
+  --gingham-bg: #fff3f7;
+  --trim: #ffc4d8;            /* the lace trim along the edge of a band */
+  --btn-shadow: #ff9fc2;
+  --paper: #ffffff;           /* a sheet laid on the page: notes, cards */
+  --paper-2: #fff4f7;         /* something set into a sheet: a quiet button, a field */
+  --field: #ffdce7;           /* a big field of pink: the footer, the call, the paper under the pile */
+  --on-field: #3a2230;
+  --ink: #3a2230;
+  --ink-2: rgba(58, 34, 48, 0.78);
+  --ink-3: rgba(58, 34, 48, 0.56);
+  --line: rgba(196, 44, 92, 0.14);
+  --line-strong: rgba(196, 44, 92, 0.38);
+  --marker: #ffb3cd;          /* the swipe of highlighter under the open page */
+  --btn-edge: #3a2230;
+  --shadow: 0 12px 30px rgba(196, 44, 92, 0.16), 0 2px 5px rgba(58, 34, 48, 0.12);
+  --open: #1f9c5d;
+
+  --display: 'Shrikhand', 'Abril Fatface', Georgia, serif;
+  --serif: 'Abril Fatface', Georgia, serif;
+  --body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --hand: 'Caveat', 'Segoe Print', cursive;
+
+  --gutter: clamp(18px, 4vw, 44px);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
+/* at night: the same pinks on deep plum paper */
+:root[data-theme='dark'] {
+  --berry: #ff6f9e;
+  --berry-deep: #e04f82;
+  --page: #241620;
+  --dot: rgba(255, 196, 216, 0.1);
+  --gingham: rgba(255, 111, 158, 0.12);
+  --gingham-bg: #2c1a27;
+  --trim: #5a2a44;
+  --btn-shadow: #ff6f9e;
+  --paper: #32202c;
+  --paper-2: #43293a;
+  --field: #5a2a44;
+  --on-field: #fff0f4;
+  --ink: #fff0f4;
+  --ink-2: rgba(255, 240, 244, 0.78);
+  --ink-3: rgba(255, 240, 244, 0.56);
+  --line: rgba(255, 196, 216, 0.14);
+  --line-strong: rgba(255, 196, 216, 0.36);
+  --marker: #8c3a62;
+  --btn-edge: #fff0f4;
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.35);
+  --open: #57c98a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  margin: 0; min-height: 100vh; overflow-x: hidden;
+  background: var(--page) radial-gradient(var(--dot) 1.2px, transparent 1.7px) 0 0 / 24px 24px;
+  color: var(--ink); font: 400 1.0625rem/1.6 var(--body);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  transition: background-color 0.35s, color 0.35s;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+::selection { background: var(--pink-2); color: var(--plum); }
+:focus-visible { outline: 2px dashed var(--berry); outline-offset: 3px; }
+
+.container { width: min(1240px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
+.page { display: block; min-height: 70vh; }
+/* one spread of the scrapbook */
+.spread { padding: clamp(48px, 7vw, 96px) 0; }
+.spread.is-first { padding-top: clamp(52px, 6vw, 76px); }
+.spread-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(28px, 4vw, 48px); }
+.spread-head .lead { margin-top: 14px; }
+
+/* ---------------------------------------------------------------- type */
+.display { font-family: var(--display); font-weight: 400; line-height: 1.08; letter-spacing: 0.005em; }
+.h-md { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.h-sm { font-size: 1.3rem; }
+.lead { max-width: 56ch; font-size: clamp(1.06rem, 1.3vw, 1.2rem); color: var(--ink-2); }
+.dim { color: var(--ink-2); }
+/* written by hand, in pen */
+.hand { font-family: var(--hand); font-weight: 700; font-size: 1.6rem; line-height: 1.1; }
+
+/* a label punched out of black label tape */
+.label {
+  display: inline-block; margin-bottom: 14px; padding: 0.5em 0.85em 0.42em; border-radius: 2px;
+  background: var(--pink); color: var(--plum); box-shadow: 0 2px 5px rgba(196, 44, 92, 0.18);
+  font: 700 0.7rem/1 var(--body); letter-spacing: 0.2em; text-transform: uppercase;
+  transform: rotate(-1.2deg);
+}
+
+/* ---------------------------------------------------------------- cut-out letters (components/Ransom.jsx) */
+.ransom { display: flex; flex-wrap: wrap; gap: 0.2em 0.36em; margin: 0; font-weight: 400; line-height: 1; }
+.ransom-word { display: inline-flex; align-items: center; white-space: nowrap; filter: drop-shadow(0.025em 0.05em 0 rgba(58, 34, 48, 0.28)); }
+.ransom-l {
+  display: inline-grid; place-items: center; min-width: 0.66em; padding: 0.11em 0.14em 0.07em; margin: 0 -0.008em;
+  background: var(--bg); color: var(--fg); line-height: 1;
+  transform: translateY(var(--y, 0)) rotate(var(--r, 0deg));
+}
+.h-hero { font-size: clamp(2.7rem, 6.3vw, 5.7rem); }
+.h-xl { font-size: clamp(2.3rem, 5.2vw, 4.4rem); }
+.h-lg { font-size: clamp(1.8rem, 3.6vw, 3rem); }
+/* the faces */
+.f-fat { font-family: 'Shrikhand', Georgia, serif; }
+.f-didone { font-family: 'Abril Fatface', Georgia, serif; }
+.f-slab { font-family: 'Alfa Slab One', Rockwell, serif; font-size: 0.94em; }
+.f-tall { font-family: 'Anton', Impact, sans-serif; font-size: 1.08em; }
+.f-type { font-family: 'Special Elite', 'Courier New', monospace; font-size: 1.02em; padding-top: 0.17em; }
+/* the paper each letter is cut from */
+.s-ox { --bg: #ffffff; --fg: #c42c5c; box-shadow: inset 0 0 0 1.5px rgba(196, 44, 92, 0.18); }
+.s-red { --bg: #c42c5c; --fg: #fff0f4; }
+.s-cream { --bg: #ffc4d8; --fg: #3a2230; }
+.s-ink { --bg: #3a2230; --fg: #ffc4d8; }
+.s-kraft { --bg: #ffd6c2; --fg: #3a2230; }
+.s-gold { --bg: #fff0a8; --fg: #3a2230; }
+.s-pink { --bg: #ff9fc2; --fg: #3a2230; }
+.s-lilac { --bg: #ddcdf7; --fg: #3a2230; }
+.s-sky { --bg: #c4e6f7; --fg: #3a2230; }
+.s-mint { --bg: #cdf2e0; --fg: #3a2230; }
+/* scissors never cut straight */
+.cut-0 { clip-path: polygon(3% 6%, 97% 0, 100% 94%, 0 100%); }
+.cut-1 { clip-path: polygon(0 0, 100% 5%, 96% 100%, 4% 95%); }
+.cut-2 { clip-path: polygon(2% 3%, 98% 0, 100% 100%, 0 96%); }
+.cut-3 { clip-path: polygon(0 5%, 95% 0, 100% 97%, 5% 100%); }
+.cut-4 { clip-path: polygon(4% 0, 100% 3%, 97% 96%, 0 100%); }
+.ransom.is-pop .ransom-l { animation: glue 0.42s var(--ease) both; animation-delay: calc(var(--i) * 75ms + 120ms); }
+@keyframes glue { from { opacity: 0; transform: translateY(-0.5em) rotate(calc(var(--r) - 24deg)) scale(1.5); } }
+
+/* ---------------------------------------------------------------- buttons: paper labels with a hard shadow */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.55em; padding: 0.85em 1.5em; border-radius: 999px; cursor: pointer; text-decoration: none;
+  background: var(--berry); color: #fff; border: 2px solid var(--btn-edge); box-shadow: 4px 5px 0 var(--btn-shadow);
+  font: 700 0.95rem/1.1 var(--body); letter-spacing: 0.02em; transform: rotate(-1deg);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.2s;
+}
+.btn:hover, .btn:focus-visible { transform: rotate(0deg) translate(-2px, -2px); box-shadow: 6px 7px 0 var(--btn-shadow); background: var(--berry-deep); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--btn-shadow); }
+.btn .arrow { transition: transform 0.25s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+.btn.ghost { background: var(--paper); color: var(--ink); border-style: dashed; box-shadow: none; transform: rotate(0.8deg); }
+.btn.ghost:hover, .btn.ghost:focus-visible { background: var(--paper-2); box-shadow: 4px 5px 0 var(--btn-shadow); transform: rotate(0deg) translate(-2px, -2px); }
+.btn.is-cream { background: #fff; color: #c42c5c; border-color: #3a2230; box-shadow: 4px 5px 0 var(--btn-shadow); }
+.btn.is-cream:hover, .btn.is-cream:focus-visible { background: var(--butter); box-shadow: 6px 7px 0 var(--btn-shadow); }
+.btn.sm { padding: 0.62em 1em; font-size: 0.85rem; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 18px; margin-top: 28px; }
+.magnetic { will-change: transform; }
+
+/* filter buttons: index tabs */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.filters-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px 24px; flex-wrap: wrap; }
+.section-tools { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.5em; padding: 0.5em 0.95em; border-radius: 999px; cursor: pointer;
+  background: var(--paper); color: var(--ink); border: 1.5px dashed var(--line-strong);
+  font: 700 0.86rem/1.1 var(--body); transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+}
+.chip small { font-size: 0.72rem; opacity: 0.6; }
+.chip:hover { transform: translateY(-2px) rotate(-1deg); border-color: var(--berry); }
+.chip.on { background: var(--berry); color: #fff; border: 1.5px solid var(--btn-edge); }
+.chip.is-fixed { cursor: default; opacity: 0.7; }
+.chip.is-fixed:hover { transform: none; border-color: var(--line-strong); }
+
+/* little paper tags */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.tags li { padding: 0.3em 0.8em; border: 1.5px dashed currentColor; border-radius: 999px; font-size: 0.84rem; font-weight: 700; }
+
+/* open or closed */
+.status, .nav-status { display: inline-flex; align-items: center; gap: 0.55em; font-weight: 700; font-size: 0.86rem; }
+.status i, .nav-status i { width: 9px; height: 9px; border-radius: 50%; background: var(--ink-3); }
+.status.on i, .nav-status i.on { background: var(--open); box-shadow: 0 0 0 4px color-mix(in srgb, var(--open) 25%, transparent); animation: beat 2.4s ease-in-out infinite; }
+@keyframes beat { 50% { box-shadow: 0 0 0 7px transparent; } }
+.status { margin-top: 24px; padding: 0.55em 1em; border-radius: 999px; background: var(--paper); border: 1.5px dashed var(--line-strong); }
+
+/* social links */
+.social { display: grid; gap: 6px; }
+.social a { display: flex; align-items: center; gap: 12px; padding: 8px 10px; margin: 0 -10px; border-radius: 8px; text-decoration: none; transition: background-color 0.2s, transform 0.2s var(--ease); }
+.social a:hover { background: color-mix(in srgb, currentColor 10%, transparent); transform: translateX(4px); }
+.social svg { flex: none; width: 24px; height: 24px; }
+.social strong { display: block; font-weight: 700; line-height: 1.2; }
+.social small { display: block; font-size: 0.85rem; opacity: 0.7; }
+.mail { font-weight: 700; text-decoration-style: wavy; text-underline-offset: 4px; }
+
+/* ---------------------------------------------------------------- things stuck to the page */
+.doodle { display: block; width: 48px; height: 48px; pointer-events: none; }
+.doodle.is-star path { fill: var(--gold); stroke: #c9972c; stroke-width: 2; }
+.doodle.is-sparkle path { fill: var(--gold); }
+.doodle.is-moon path { fill: var(--gold); }
+.doodle.is-heart .doodle-paper { fill: var(--print); }
+.doodle.is-heart .doodle-pen { fill: none; stroke: #c42c5c; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+/* washi tape: translucent, striped, torn at both ends */
+.tape {
+  position: absolute; z-index: 2; top: -13px; left: 50%; width: 96px; height: 27px; transform: translateX(-50%) rotate(-3deg); pointer-events: none;
+  background: repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.35) 0 5px, transparent 5px 11px), rgba(255, 159, 194, 0.82);
+  clip-path: polygon(0 0, 3% 22%, 0 44%, 3% 66%, 0 100%, 100% 100%, 97% 78%, 100% 56%, 97% 34%, 100% 0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------------------------------------------- pictures (components/Print.jsx) */
+.print { position: relative; display: block; transform: rotate(var(--tilt, 0deg)); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.print-art { display: block; overflow: hidden; background: var(--paper-2); }
+.print img { display: block; width: 100%; height: auto; }
+.print img.pending { aspect-ratio: 3 / 4; }
+.print-blank { display: grid; place-items: center; aspect-ratio: 4 / 5; padding: 12%; text-align: center; font: 700 1.5rem/1.15 var(--hand); color: var(--ink-3); background: repeating-linear-gradient(transparent 0 27px, var(--line) 27px 28px); }
+/* a print with a white edge, and room underneath to write on */
+.print.is-polaroid { padding: 4.5%; background: var(--print); border-radius: 3px; box-shadow: var(--shadow); }
+.print.is-polaroid .print-art { aspect-ratio: 4 / 5; }
+.print.is-polaroid img { height: 100%; object-fit: cover; object-position: 50% 18%; }
+.print-cap { display: block; padding: 0.45em 0.1em 0; margin-bottom: -1.5%; text-align: center; font: 700 1.38rem/1.1 var(--hand); color: var(--print-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* a die-cut sticker: white all round, shown whole */
+.print.is-sticker { padding: 7px; background: var(--print); border-radius: 20px; box-shadow: var(--shadow); }
+.print.is-sticker .print-art { border-radius: 14px; }
+/* a photocard */
+.print.is-card { padding: 5px; background: var(--print); border-radius: 14px; box-shadow: var(--shadow); }
+.print.is-card .print-art { aspect-ratio: 3 / 4; border-radius: 10px; }
+.print.is-card img { height: 100%; object-fit: cover; }
+
+/* ---------------------------------------------------------------- between pages: a torn sheet of the red paper */
+.turn, .preloader { position: fixed; inset: 0; z-index: 900; background: var(--pink); pointer-events: none; }
+/* lace: a row of scallops along the edge of a band (--fill is the colour of the band) */
+.turn::before, .turn::after, .footer::before {
+  content: ''; position: absolute; left: 0; right: 0; height: 18px;
+  background: radial-gradient(circle at 50% 100%, var(--fill) 12.5px, transparent 13px) 0 0 / 26px 18px repeat-x;
+}
+.turn { --fill: var(--pink); }
+.turn::before { top: -17px; }
+.turn::after { bottom: -17px; transform: scaleY(-1); }
+/* pink gingham, the cloth of a picnic or a doll's dress */
+.gingham, .hero, .page-head::before {
+  background:
+    linear-gradient(90deg, var(--gingham) 50%, transparent 0) 0 0 / 30px 30px,
+    linear-gradient(var(--gingham) 50%, transparent 0) 0 0 / 30px 30px,
+    var(--gingham-bg);
+}
+
+.fresh-note { position: fixed; z-index: 950; left: 50%; bottom: 16px; transform: translateX(-50%) rotate(-1deg); max-width: calc(100vw - 32px); padding: 10px 16px; border-radius: 4px; background: var(--butter); color: var(--plum); font-size: 0.86rem; font-weight: 700; box-shadow: var(--shadow); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

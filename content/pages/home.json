@@ -1,0 +1,102 @@
+{
+  "kicker": "Artist · Illustrator · Animator",
+  "text": "I draw the things I grew up obsessed with: monster dolls, fairy tale couples and spooky cartoons. Then I turn them into stickers, prints and charms.",
+  "primaryLabel": "See the work",
+  "secondaryLabel": "Commission a piece",
+  "marquee": [
+    "Witchy vibes",
+    "00s nostalgia",
+    "Fan art",
+    "Stickers",
+    "Prints",
+    "Charms",
+    "Animation",
+    "Commissions"
+  ],
+  "project": {
+    "label": "On the desk right now",
+    "title": "Inktober",
+    "subtitle": "A month of Monster High",
+    "text": "A whole month of Monster High, one prompt a day, from the list by @nictoru_. What better way to do a month challenge than drawing my biggest obsession?",
+    "image": "/uploads/dawn-of-the-dance.webp",
+    "buttonLabel": "Follow along on Instagram",
+    "url": "https://www.instagram.com/catherinejsart/",
+    "secondLabel": "",
+    "secondUrl": ""
+  },
+  "latestLabel": "Fresh from the sketchbook",
+  "latestTitle": "Latest pieces",
+  "shop": {
+    "label": "The shop",
+    "title": "Take some home",
+    "text": "Stickers, prints, photocards, keychains and acrylic standees, packed by me and sent out with love.",
+    "items": [
+      "Stickers",
+      "A5 prints",
+      "Photocards",
+      "Keychains",
+      "Standees"
+    ],
+    "code": "SUMMERFLASH50",
+    "codeNote": "Half off everything at checkout",
+    "buttonLabel": "Visit the shop",
+    "url": "https://ko-fi.com/catherinejsart",
+    "products": [
+      {
+        "title": "Monster High stickers",
+        "price": "",
+        "image": "/uploads/shop-monster-high-wave-1-stickers.webp",
+        "url": "https://ko-fi.com/s/940c8f3c36"
+      },
+      {
+        "title": "Monster High photocards",
+        "price": "€3",
+        "image": "/uploads/shop-monster-high-photocards.webp",
+        "url": "https://ko-fi.com/s/0eb535d476"
+      },
+      {
+        "title": "Vampire A5 print",
+        "price": "",
+        "image": "/uploads/shop-vampire-print.webp",
+        "url": "https://ko-fi.com/s/f917903727"
+      },
+      {
+        "title": "Winx stickers",
+        "price": "",
+        "image": "/uploads/shop-winx-stickers.webp",
+        "url": "https://ko-fi.com/s/c9fa9635f3"
+      },
+      {
+        "title": "Acrylic standees",
+        "price": "",
+        "image": "/uploads/shop-acrylic-standees.webp",
+        "url": "https://ko-fi.com/s/1c81c12be3"
+      },
+      {
+        "title": "Spooky Scary Kittens sheet",
+        "price": "",
+        "image": "/uploads/shop-spooky-scary-kittens-sticker-sheet.webp",
+        "url": "https://ko-fi.com/s/2a282e2be8"
+      },
+      {
+        "title": "Kpop Demon Hunters stickers",
+        "price": "€2",
+        "image": "/uploads/shop-kpop-demon-hunters-stickers.webp",
+        "url": "https://ko-fi.com/s/b0dc4e6985"
+      },
+      {
+        "title": "Mystery Inc stickers",
+        "price": "€2",
+        "image": "/uploads/shop-mystery-inc-stickers.webp",
+        "url": "https://ko-fi.com/s/4f77a3b80b"
+      }
+    ]
+  },
+  "redrawLabel": "The process",
+  "redrawTitle": "Sketch to finish",
+  "redrawText": "The same piece at each stage. Drag the line to wipe from the sketch to the finished colours.",
+  "commissionsTitle": "Commissions are",
+  "commissionsButton": "How it works",
+  "eventsLabel": "In person",
+  "eventsTitle": "Find me at"
+}

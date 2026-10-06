@@ -1,0 +1,78 @@
+{
+  "open": true,
+  "title": "Get something drawn",
+  "intro": "Your favourite character, your own character, or you and your other half, drawn in my style. Tell me what you have in mind.",
+  "tiers": [
+    {
+      "name": "The Bust",
+      "text": "Head and shoulders of one character, fully coloured.",
+      "price": "",
+      "includes": [
+        "Full colour",
+        "Simple background",
+        "High-resolution file"
+      ]
+    },
+    {
+      "name": "The Half Body",
+      "text": "One character from the waist up, with room for a pose and an outfit.",
+      "price": "",
+      "includes": [
+        "Full colour",
+        "Simple background",
+        "High-resolution file"
+      ]
+    },
+    {
+      "name": "The Full Body",
+      "text": "One character head to toe, shoes and all.",
+      "price": "",
+      "includes": [
+        "Full colour",
+        "Simple background",
+        "High-resolution file"
+      ]
+    },
+    {
+      "name": "The Lovers",
+      "text": "Two characters together: a couple, best friends, or you and your partner.",
+      "price": "",
+      "includes": [
+        "Two characters",
+        "Full colour",
+        "Background to match"
+      ]
+    }
+  ],
+  "quoteLabel": "Get a quote",
+  "quoteUrl": "",
+  "processLabel": "The process",
+  "processTitle": "How it works",
+  "steps": [
+    {
+      "title": "Send the idea",
+      "text": "Who or what, the mood, and any reference pictures you have."
+    },
+    {
+      "title": "Quote and sketch",
+      "text": "You get a price, then a sketch to approve before any colour goes on."
+    },
+    {
+      "title": "Colour",
+      "text": "I finish the piece and send progress shots along the way."
+    },
+    {
+      "title": "Delivery",
+      "text": "A high-resolution file lands in your inbox, ready to print or post."
+    }
+  ],
+  "requestLabel": "Request",
+  "requestTitle": "Tell me the idea",
+  "closedTitle": "Join the list",
+  "closedText": "Commissions are closed for now. Send the idea anyway and you will hear back when a slot opens.",
+  "notes": [
+    "Fan art and original characters are both welcome.",
+    "Personal use unless we agree otherwise.",
+    "Turnaround depends on the queue; ask and I will tell you where it stands."
+  ]
+}

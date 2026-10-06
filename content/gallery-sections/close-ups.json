@@ -1,0 +1,73 @@
+{
+  "title": "Close-ups",
+  "description": "The same pieces from very near: faces, hands and all the little details.",
+  "order": 4,
+  "from": "none",
+  "hidden": false,
+  "items": [
+    {
+      "src": "/uploads/clawdeen-wolf-detail-2.webp",
+      "title": "Clawdeen Wolf, close-up"
+    },
+    {
+      "src": "/uploads/clawdeen-wolf-detail-1.webp",
+      "title": "Clawdeen Wolf, close-up"
+    },
+    {
+      "src": "/uploads/campus-stroll-detail-1.webp",
+      "title": "Campus Stroll, close-up"
+    },
+    {
+      "src": "/uploads/campus-stroll-detail-2.webp",
+      "title": "Campus Stroll, close-up"
+    },
+    {
+      "src": "/uploads/dawn-of-the-dance-detail-1.webp",
+      "title": "Dawn of the Dance, close-up"
+    },
+    {
+      "src": "/uploads/dawn-of-the-dance-detail-2.webp",
+      "title": "Dawn of the Dance, close-up"
+    },
+    {
+      "src": "/uploads/dawn-of-the-dance-detail-3.webp",
+      "title": "Dawn of the Dance, close-up"
+    },
+    {
+      "src": "/uploads/skull-shores-detail-1.webp",
+      "title": "Skull Shores, close-up"
+    },
+    {
+      "src": "/uploads/skull-shores-detail-2.webp",
+      "title": "Skull Shores, close-up"
+    },
+    {
+      "src": "/uploads/skull-shores-detail-3.webp",
+      "title": "Skull Shores, close-up"
+    },
+    {
+      "src": "/uploads/skull-shores-detail-4.webp",
+      "title": "Skull Shores, close-up"
+    },
+    {
+      "src": "/uploads/over-the-garden-wall-detail-1.webp",
+      "title": "Over the Garden Wall, close-up"
+    },
+    {
+      "src": "/uploads/over-the-garden-wall-detail-2.webp",
+      "title": "Over the Garden Wall, close-up"
+    },
+    {
+      "src": "/uploads/over-the-garden-wall-detail-3.webp",
+      "title": "Over the Garden Wall, close-up"
+    },
+    {
+      "src": "/uploads/rapunzel-and-flynn-detail.webp",
+      "title": "Rapunzel and Flynn, close-up"
+    },
+    {
+      "src": "/uploads/erika-and-liana-detail.webp",
+      "title": "Erika and Liana, close-up"
+    }
+  ]
+}

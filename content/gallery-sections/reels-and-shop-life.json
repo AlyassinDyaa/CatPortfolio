@@ -1,0 +1,24 @@
+{
+  "title": "Reels and shop life",
+  "description": "Covers from my reels: doll reactions, packing orders and other bits.",
+  "order": 6,
+  "from": "none",
+  "hidden": false,
+  "items": [
+    {
+      "src": "/uploads/doll-reaction.webp",
+      "title": "Doll reaction",
+      "note": "Reacting to the new Venus McFlytrap doll."
+    },
+    {
+      "src": "/uploads/monster-high-order.webp",
+      "title": "Monster High order",
+      "note": "Packing the biggest order so far: prints, photocards, keychains and all the stickers."
+    },
+    {
+      "src": "/uploads/which-couple-are-you.webp",
+      "title": "Which couple are you",
+      "note": "Four couples, four illustrations."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "label": "Pass me a note",
+  "title": "Say hello",
+  "intro": "Commissions, collaborations, a question about an order, or just to say you liked a piece.",
+  "topics": [
+    "Just saying hi",
+    "A commission",
+    "A collaboration",
+    "An order from the shop",
+    "Something else"
+  ]
+}

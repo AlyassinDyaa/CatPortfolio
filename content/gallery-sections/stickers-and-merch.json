@@ -1,0 +1,81 @@
+{
+  "title": "Stickers and merch",
+  "description": "Stickers, photocards and standees, as they come out of the shop.",
+  "order": 5,
+  "from": "none",
+  "hidden": false,
+  "items": [
+    {
+      "src": "/uploads/shop-monster-high-wave-1-stickers.webp",
+      "title": "Monster High stickers, wave 1"
+    },
+    {
+      "src": "/uploads/shop-monster-high-photocards.webp",
+      "title": "Monster High photocards"
+    },
+    {
+      "src": "/uploads/shop-winx-stickers.webp",
+      "title": "Winx stickers"
+    },
+    {
+      "src": "/uploads/shop-acrylic-standees.webp",
+      "title": "Acrylic standees"
+    },
+    {
+      "src": "/uploads/shop-barbie-fairytopia-stickers.webp",
+      "title": "Barbie Fairytopia stickers"
+    },
+    {
+      "src": "/uploads/shop-barbie-stickers.webp",
+      "title": "Barbie stickers"
+    },
+    {
+      "src": "/uploads/shop-mystery-inc-stickers.webp",
+      "title": "Mystery Inc stickers"
+    },
+    {
+      "src": "/uploads/shop-kpop-demon-hunters-stickers.webp",
+      "title": "Kpop Demon Hunters stickers"
+    },
+    {
+      "src": "/uploads/shop-digital-circus-photocards.webp",
+      "title": "The Amazing Digital Circus photocards"
+    },
+    {
+      "src": "/uploads/shop-hellaverse-stickers.webp",
+      "title": "Hellaverse stickers"
+    },
+    {
+      "src": "/uploads/shop-hellaverse-prints.webp",
+      "title": "Hellaverse sketch prints"
+    },
+    {
+      "src": "/uploads/shop-ruby-gloom-stickers.webp",
+      "title": "Ruby Gloom stickers"
+    },
+    {
+      "src": "/uploads/shop-betty-boop-stickers.webp",
+      "title": "Betty Boop stickers"
+    },
+    {
+      "src": "/uploads/shop-jeff-the-land-shark-stickers.webp",
+      "title": "Jeff the Land Shark stickers"
+    },
+    {
+      "src": "/uploads/shop-princesses-stickers.webp",
+      "title": "Princesses, Monster High and more"
+    },
+    {
+      "src": "/uploads/shop-miscellaneous-stickers.webp",
+      "title": "Miscellaneous stickers"
+    },
+    {
+      "src": "/uploads/shop-bug-sticker.webp",
+      "title": "\"You're Bugging Me\" sticker"
+    },
+    {
+      "src": "/uploads/shop-sweets-stamp-sticker.webp",
+      "title": "Sweets stamp sticker"
+    }
+  ]
+}

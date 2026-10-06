@@ -1,0 +1,55 @@
+{
+  "title": "Hi, I am Cat",
+  "intro": "Catarina Silva, 26, from Portugal. Artist, illustrator and animator.",
+  "image": "/uploads/clawdeen-wolf.webp",
+  "story": [
+    {
+      "title": "Witchy vibes and 00s nostalgia",
+      "text": "That is the whole mood. I draw the dolls, cartoons and films I grew up with, a little spookier and a lot more sparkly than I remember them.",
+      "image": "/uploads/campus-stroll.webp"
+    },
+    {
+      "title": "The obsession",
+      "text": "Monster High is my biggest one. I am spending a whole Inktober drawing nothing else, and Clawdeen Wolf is still my favourite ghoul.",
+      "image": "/uploads/dawn-of-the-dance.webp"
+    },
+    {
+      "title": "Fairy tales and cosy shows",
+      "text": "Tangled, the Barbie films, Over the Garden Wall: anything with a good couple, a great villain or a strange world to get lost in ends up in my sketchbook.",
+      "image": "/uploads/rapunzel-and-flynn.webp"
+    },
+    {
+      "title": "The shop",
+      "text": "My drawings become stickers, prints, photocards, keychains and standees. I pack every order myself.",
+      "image": "/uploads/monster-high-order.webp",
+      "button": "Visit the shop",
+      "url": "https://ko-fi.com/catherinejsart"
+    }
+  ],
+  "facts": [
+    {
+      "label": "Name",
+      "value": "Catarina, or just Cat"
+    },
+    {
+      "label": "From",
+      "value": "Portugal"
+    },
+    {
+      "label": "I am an",
+      "value": "Artist, illustrator and animator"
+    },
+    {
+      "label": "Favourite ghoul",
+      "value": "Clawdeen Wolf"
+    },
+    {
+      "label": "Favourite Disney couple",
+      "value": "Rapunzel and Flynn"
+    },
+    {
+      "label": "Mood",
+      "value": "Witchy vibes, 00s nostalgia"
+    }
+  ]
+}
